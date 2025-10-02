@@ -1,0 +1,63 @@
+{
+  "name": "server-lit",
+  "version": "0.1.0",
+  "description": "Setup an auth server without hassle",
+  "keywords": [
+    "auth",
+    "express"
+  ],
+  "homepage": "https://github.com/Esavwede/serverlit#readme",
+  "bugs": {
+    "url": "https://github.com/Esavwede/serverlit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Esavwede/serverlit.git"
+  },
+  "license": "ISC",
+  "author": "ogagaoghene esavwede",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "test",
+    "dev": "tsc --watch & nodemon ./dist/server/server.js",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --fix --ext .ts src",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "cookie-parser": "1.4.7",
+    "express": "5.1.0",
+    "http-errors": "2.0.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "1.4.9",
+    "@types/eslint": "9.6.1",
+    "@types/express": "5.0.3",
+    "@types/http-errors": "2.0.5",
+    "@types/node": "^24.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-security": "^3.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.3",
+    "nodemon": "3.1.10",
+    "prettier": "3.6.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.45.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}

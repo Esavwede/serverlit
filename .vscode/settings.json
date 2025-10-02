@@ -1,0 +1,6 @@
+{
+  "postman.settings.dotenv-detection-notification-visibility": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": ["typescript", "javascript"],
+  "editor.formatOnSave": true
+}
