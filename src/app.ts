@@ -38,7 +38,7 @@ app.use(compression())
 app.get("/health", (req, res) => {
   res.status(200).json({
     status: "success",
-    message: "Server is healthy",
+    message: "Server healthy",
   })
 })
 
