@@ -19,9 +19,10 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
+    "start": "node --env-file=.env ./dist/server/server.js",
     "build": "tsc",
     "test": "test",
-    "dev": "tsc --watch & nodemon ./dist/server/server.js",
+    "dev": "nodemon ./src/server/server.ts",
     "lint": "eslint --ext .ts src",
     "lint:fix": "eslint --fix --ext .ts src",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -29,12 +30,19 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "cookie-parser": "1.4.7",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "express": "5.1.0",
-    "http-errors": "2.0.0"
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "http-errors": "^2.0.0",
+    "pino": "^10.0.0"
   },
   "devDependencies": {
+    "@types/compression": "^1.8.1",
     "@types/cookie-parser": "1.4.9",
+    "@types/cors": "^2.8.19",
     "@types/eslint": "9.6.1",
     "@types/express": "5.0.3",
     "@types/http-errors": "2.0.5",
@@ -50,6 +58,7 @@
     "lint-staged": "^16.2.3",
     "nodemon": "3.1.10",
     "prettier": "3.6.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.45.0"
   },

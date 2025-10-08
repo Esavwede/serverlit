@@ -1,9 +1,9 @@
 // eslint.config.js
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import prettier from "eslint-config-prettier";
-import pluginImport from "eslint-plugin-import";
-import pluginSecurity from "eslint-plugin-security";
+import eslint from "@eslint/js"
+import tseslint from "typescript-eslint"
+import prettier from "eslint-config-prettier"
+import pluginImport from "eslint-plugin-import"
+import pluginSecurity from "eslint-plugin-security"
 
 export default [
   eslint.configs.recommended,
@@ -32,4 +32,4 @@ export default [
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     },
   },
-];
+]
