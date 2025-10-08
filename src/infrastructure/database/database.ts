@@ -8,8 +8,28 @@ async function connectToDatabase() {
       process.exit(1)
     }
 
+    mongoose.connection.on("connecting", () => {
+      logger.info("Database connecting")
+    })
+
     mongoose.connection.on("connected", () => {
       logger.info("Database connected")
+    })
+
+    mongoose.connection.on("disconnecting", () => {
+      logger.info("Database disconnecting")
+    })
+
+    mongoose.connection.on("disconnected", () => {
+      logger.info("Database connecting")
+    })
+
+    mongoose.connection.on("reconnected", () => {
+      logger.info("Database reconnected")
+    })
+
+    mongoose.connection.on("close", () => {
+      logger.info("Database connection closed successfully")
     })
 
     mongoose.connection.on("error", (e) => {
