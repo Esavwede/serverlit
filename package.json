@@ -23,13 +23,14 @@
     "build": "tsc",
     "test": "test",
     "dev": "nodemon ./src/server/server.ts",
-    "lint": "eslint --ext .ts src",
+    "lint:check": "eslint --ext .ts src",
     "lint:fix": "eslint --fix --ext .ts src",
     "format:check": "prettier --check \"src/**/*.ts\"",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format:fix": "prettier --write \"src/**/*.ts\"",
     "prepare": "husky"
   },
   "dependencies": {
+    "@godaddy/terminus": "^4.12.1",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
