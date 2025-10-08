@@ -26,4 +26,4 @@ jobs:
                   node-version: 20
             - run: npm ci
             - run: npm run format:check # Prettier check
-            - run: npm run lint -- --max-warnings=0 # Fail on warnings
+            - run: npm run lint:check -- --max-warnings=0 # Fail on warnings
