@@ -19,8 +19,6 @@ on:
 jobs:
     lint:
         runs-on: ubuntu-latest
-        env:
-            NODE_ENV: production
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
