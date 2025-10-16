@@ -8,6 +8,13 @@ import helmet from "helmet"
 import compression from "compression"
 import rateLimit from "express-rate-limit"
 import logger from "./common/logger/logger.js"
+import initializeRoutes from "./routes/index.route.js"
+import initializeSuperTokens from "./config/auth/supertokens.js"
+import { errorHandler, middleware } from "supertokens-node/framework/express"
+import authRoutes from "./modules/auth/routes/auth.routes.js"
+
+/* SuperTokens */
+initializeSuperTokens()
 
 const app = express()
 
@@ -32,26 +39,31 @@ app.use(
 // performance
 app.use(compression())
 
-/* Routes */
+// Auth Routes
+// bypassing supertokens for auth routes
+app.use("/api/v1", authRoutes)
 
-// health
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "Server healthy",
-  })
-})
+// supertokens
+app.use(middleware())
+
+/* Routes */
+initializeRoutes(app)
 
 /* Error handling */
 
+// supertokens
+app.use(errorHandler())
+
+// 404
 app.use((req, res) => {
   logger.error(" route not found " + req.path)
   res.status(404).json({ status: "fail" })
 })
 
+// Global error handler
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  logger.error("App error handler " + err)
+  logger.error({ err }, "App error handler ")
   res.status(500).json({ status: "error" })
 })
 

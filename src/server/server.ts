@@ -21,6 +21,11 @@ server.listen(PORT, async () => {
 
 // shutdown handler
 async function onSignal(): Promise<void> {
+  // Skip Graceful shutdown in development
+  if (process.env.NODE_ENV === "development") {
+    process.exit(0)
+  }
+
   logger.info("Closing database connections")
   await mongoose.connection.close()
   await new Promise((resolve) => setTimeout(resolve, 200))
